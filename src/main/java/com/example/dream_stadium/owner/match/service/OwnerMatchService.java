@@ -39,7 +39,7 @@ public class OwnerMatchService {
 
 
 
-       Match match = new Match(
+ /*      Match match = new Match(
                null,
                ownerMatchRequestDto.getName(),
                ownerMatchRequestDto.getCost(),
@@ -48,21 +48,21 @@ public class OwnerMatchService {
                awayTeam,
                stadium,
                user
-               );
+               );*/
 
-//       Match match = Match.toEntity(
-//               ownerMatchRequestDto.getName(),
-//               ownerMatchRequestDto.getCost(),
-//               ownerMatchRequestDto.getMatchDate(),
-//               homeTeam,
-//               awayTeam,
-//               stadium,
-//               user
-//       );
+       Match match = Match.toEntity(
+               ownerMatchRequestDto.getName(),
+               ownerMatchRequestDto.getCost(),
+               ownerMatchRequestDto.getMatchDate(),
+               homeTeam,
+               awayTeam,
+               stadium,
+               user
+       );
 
        Match savedMatch = ownerMatchRepository.save(match);
 
-        return new OwnerMatchResponseDto(
+     /*   return new OwnerMatchResponseDto(
                 savedMatch.getId(),
                 savedMatch.getName(),
                 savedMatch.getCost(),
@@ -70,7 +70,7 @@ public class OwnerMatchService {
                 savedMatch.getHomeTeam().getId(),
                 savedMatch.getAwayTeam().getId(),
                 savedMatch.getStadium().getId()
-        );
-//        return OwnerMatchResponseDto.from(savedMatch);
+        );*/
+        return OwnerMatchResponseDto.from(savedMatch);
     }
 }
