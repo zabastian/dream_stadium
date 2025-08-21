@@ -22,6 +22,7 @@ public class Team extends BaseEntity {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     public User user;
 
     public Team(String name, User user) {
