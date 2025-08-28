@@ -33,6 +33,7 @@ public class TokenService {
 //    @Value("${jwt.secret}")
 //    private String secret;
 
+    @Transactional
     public String createAccessToken(Long userId, UserRole role) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRETE);

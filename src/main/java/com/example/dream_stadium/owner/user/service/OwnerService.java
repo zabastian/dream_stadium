@@ -8,6 +8,7 @@ import com.example.dream_stadium.global.exception.BaseException;
 import com.example.dream_stadium.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class OwnerService {
 
     private final AuthRepository authRepository;
 
+    @Transactional(readOnly = true)
     public UserResponse getUserInfo(Long userId) {
         User user = authRepository.findById(userId).
                 orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
@@ -24,6 +26,7 @@ public class OwnerService {
         return new UserResponse(user.getNickname(), user.getUserRole());
     }
 
+    @Transactional(readOnly = true)
     public List<UserResponse> getUserList() {
         List<User> users = authRepository.findAll();
 

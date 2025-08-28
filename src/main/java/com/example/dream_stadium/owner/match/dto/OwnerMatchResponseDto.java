@@ -11,7 +11,6 @@ import java.time.LocalDate;
 public class OwnerMatchResponseDto {
     private Long matchId;
     private String name;
-    private Long cost;
     private LocalDate matchDate;
     private Long homeTeamId;
     private Long awayTeamId;
@@ -21,7 +20,6 @@ public class OwnerMatchResponseDto {
         return new OwnerMatchResponseDto(
                 match.getId(),
                 match.getName(),
-                match.getCost(),
                 match.getMatchDate(),
                 match.getHomeTeam().getId(),
                 match.getAwayTeam().getId(),
