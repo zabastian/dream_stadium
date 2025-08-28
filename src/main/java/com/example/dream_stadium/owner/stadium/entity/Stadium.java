@@ -23,6 +23,7 @@ public class Stadium extends BaseEntity {
     private String name;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Stadium(String name, User user) {

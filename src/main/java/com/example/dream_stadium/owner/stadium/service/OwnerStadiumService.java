@@ -11,6 +11,7 @@ import com.example.dream_stadium.owner.stadium.repository.OwnerStadiumRepository
 import com.example.dream_stadium.owner.team.dto.OwnerTeamResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class OwnerStadiumService {
     private final AuthRepository authRepository;
     private final OwnerStadiumRepository ownerStadiumRepository;
 
+    @Transactional
     public void createStadium (Long id, OwnerStadiumRequestDto ownerStadiumRequestDto) {
         User user = authRepository.findById(id)
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
@@ -31,6 +33,7 @@ public class OwnerStadiumService {
 
     }
 
+    @Transactional(readOnly = true)
     public List<OwnerStadiumResponseDto> stadiumList() {
 
         List<Stadium> listStadium = ownerStadiumRepository.findAll();
@@ -42,6 +45,7 @@ public class OwnerStadiumService {
 
     }
 
+    @Transactional
     public void deleteStadium(Long id, Long stadiumId) {
         User user = authRepository.findById(id)
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));

@@ -26,6 +26,7 @@ public class TeamService {
     private final TeamRepository teamRepository;
     private final AuthRepository authRepository;
 
+    @Transactional
     public void createTeam(Long userId, OwnerTeamRequestDto ownerTeamRequestDto) {
         User user = authRepository.findById(userId)
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
@@ -35,6 +36,7 @@ public class TeamService {
        teamRepository.save(team);
     }
 
+    @Transactional
     public OwnerTeamResponseDto patchTeam(Long userId ,Long teamId, OwnerTeamRequestDto ownerTeamRequestDto) {
        User user = authRepository.findById(userId)
                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
@@ -57,6 +59,7 @@ public class TeamService {
 
     }
 
+    @Transactional(readOnly = true)
     public List<OwnerTeamResponseDto> listTeam() {
         List<Team> teams = teamRepository.findAll();
 
@@ -86,4 +89,6 @@ public class TeamService {
 
         teamRepository.delete(team);
     }
+
+
 }

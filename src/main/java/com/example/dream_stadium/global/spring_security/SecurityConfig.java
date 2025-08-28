@@ -4,6 +4,7 @@ import com.example.dream_stadium.global.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,9 +29,13 @@ public class SecurityConfig {
                 )
                 .formLogin(login -> login.disable()) // 기본 제공되는 form 기반 로그인 화면을 사용하지 않겠다
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/signUp", "/auth/login","auth/refresh").permitAll()
+                        .requestMatchers("/auth/signUp", "/auth/login","/auth/refresh").permitAll()
                         .requestMatchers("/owner/**").hasRole("OWNER") // "ROLE_CUSTOMER" 권한을 갖고 있어야 함
                         .requestMatchers("/customer/**").hasRole("CUSTOMER") // "ROLE_CUSTOMER" 권한을 갖고 있어야 함
+//                                .requestMatchers(HttpMethod.POST, "/owner/**").hasRole("OWNER")
+//                                .requestMatchers(HttpMethod.GET, "/owner/**").hasRole("OWNER")
+//                                .requestMatchers(HttpMethod.DELETE, "/owner/**").hasRole("OWNER")
+//                                .requestMatchers(HttpMethod.PUT, "/owner/**").hasRole("OWNER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
