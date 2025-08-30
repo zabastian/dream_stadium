@@ -33,7 +33,7 @@ public class MatchSeat {
     public Match match;
 
     @Column(name = "is_reserved")
-    private boolean isReserved;
+    private boolean isReserved = false;
 
     public MatchSeat(Long capacity, MatchSeatRole matchSeatRole, Seat seat, Match match) {
         this.capacity =capacity;
