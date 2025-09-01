@@ -1,8 +1,12 @@
 package com.example.dream_stadium.common.user.entity;
 
+import com.example.dream_stadium.owner.userCoupon.entity.UserCoupon;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -42,5 +46,8 @@ public class User extends BaseEntity {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserCoupon> userCoupons = new ArrayList<>();
 
 }

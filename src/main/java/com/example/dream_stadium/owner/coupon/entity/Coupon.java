@@ -2,10 +2,14 @@ package com.example.dream_stadium.owner.coupon.entity;
 
 import com.example.dream_stadium.common.user.entity.BaseEntity;
 import com.example.dream_stadium.common.user.entity.User;
+import com.example.dream_stadium.owner.userCoupon.entity.UserCoupon;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -42,4 +46,7 @@ public class Coupon extends BaseEntity {
         this.name = name;
         this.couponType = couponType;
     }
+
+    @OneToMany(mappedBy = "coupon", cascade = CascadeType.ALL)
+    private List<UserCoupon> userCoupons = new ArrayList<>();
 }
