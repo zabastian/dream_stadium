@@ -2,6 +2,7 @@ package com.example.dream_stadium.owner.userCoupon.service;
 
 import com.example.dream_stadium.common.auth.repository.AuthRepository;
 import com.example.dream_stadium.common.user.entity.User;
+import com.example.dream_stadium.common.user.entity.UserRole;
 import com.example.dream_stadium.global.exception.BaseException;
 import com.example.dream_stadium.global.exception.ErrorCode;
 import com.example.dream_stadium.owner.coupon.entity.Coupon;
@@ -14,6 +15,7 @@ import com.example.dream_stadium.owner.userCoupon.repository.UserCouponRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -26,19 +28,28 @@ public class UserCouponService {
     private final OwnerCouponRepository ownerCouponRepository;
     private final UserCouponRepository userCouponRepository;
 
-    public UserCouponResponseDto createUserCoupon(UserCouponRequestDto userCouponRequestDto) {
-
-        User user = authRepository.findById(userCouponRequestDto.getUserId())
-                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+    public List<UserCouponResponseDto> createUserCoupon(UserCouponRequestDto userCouponRequestDto) {
 
         Coupon coupon = ownerCouponRepository.findById(userCouponRequestDto.getCouponId())
                 .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
 
-       UserCoupon userCoupon = UserCoupon.from(userCouponRequestDto, user, coupon);
+        List<User> allUsers = authRepository.findAll()
+                .stream()
+                .filter(user -> user.getUserRole() == UserRole.CUSTOMER)
+                .toList();
 
-       userCouponRepository.save(userCoupon);
+        List<UserCouponResponseDto> responseList = new ArrayList<>();
+        for(User user : allUsers) {
+            UserCoupon userCoupon = UserCoupon.from(userCouponRequestDto,user, coupon);
+            userCouponRepository.save(userCoupon);
+            responseList.add(UserCouponResponseDto.to(userCoupon));
+        }
 
-        return UserCouponResponseDto.to(userCoupon);
+//        UserCoupon userCoupon = UserCoupon.from(userCouponRequestDto, coupon);
+//
+//        userCouponRepository.save(userCoupon);
+
+        return responseList;
     }
 
     public List<UserCouponResponseDto> userCouponList() {

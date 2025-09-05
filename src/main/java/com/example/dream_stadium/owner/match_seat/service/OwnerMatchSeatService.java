@@ -43,13 +43,6 @@ public class OwnerMatchSeatService {
             throw new BaseException(ErrorCode.USER_NOT_FOUND);
         }
 
-/*        MatchSeat matchSeat = new MatchSeat(
-                ownerMatchSeatRequestDto.getCapacity(),
-                ownerMatchSeatRequestDto.getMatchSeatRole(),
-                seat,
-                match
-        );*/
-
         MatchSeat matchSeat = MatchSeat.from(
                 ownerMatchSeatRequestDto.getCapacity(),
                 ownerMatchSeatRequestDto.getMatchSeatRole(),
@@ -59,8 +52,8 @@ public class OwnerMatchSeatService {
 
         match.getMatchSeats().add(matchSeat);
         seat.getMatchSeats().add(matchSeat);
-        matchSeat.setMatch(match);
-        matchSeat.setSeat(seat);
+//        matchSeat.setMatch(match); 팩토리메소드 통 match와 seat을 set해줌
+//        matchSeat.setSeat(seat);
 
         MatchSeat matchSeat1 = ownerMatchSeatRepository.save(matchSeat);
 

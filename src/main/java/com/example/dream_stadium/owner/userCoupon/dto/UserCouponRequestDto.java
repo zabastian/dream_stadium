@@ -7,6 +7,5 @@ import lombok.Getter;
 @Getter
 public class UserCouponRequestDto {
     private String name;
-    private Long userId;
     private Long couponId;
 }

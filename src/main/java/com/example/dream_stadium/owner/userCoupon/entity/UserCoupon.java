@@ -6,9 +6,11 @@ import com.example.dream_stadium.owner.coupon.entity.Coupon;
 import com.example.dream_stadium.owner.userCoupon.dto.UserCouponRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class UserCoupon extends BaseEntity {
 
     @Id
@@ -18,6 +20,9 @@ public class UserCoupon extends BaseEntity {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "is_download")
+    private boolean isdownload = false;
 
     @Column(name = "is_used")
     private boolean isUsed = false;
@@ -36,9 +41,18 @@ public class UserCoupon extends BaseEntity {
         this.coupon = coupon;
     }
 
+    public UserCoupon(String name, Coupon coupon) {
+        this.name = name;
+        this.coupon = coupon;
+    }
+
     public UserCoupon() {}
 
-    public static UserCoupon from(UserCouponRequestDto userCouponRequestDto, User user, Coupon coupon) {
+    public static UserCoupon from(UserCouponRequestDto userCouponRequestDto,User user, Coupon coupon) {
         return new UserCoupon(userCouponRequestDto.getName(), user, coupon);
+    }
+
+    public void download() {
+        this.isdownload = true;
     }
 }
