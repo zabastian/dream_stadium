@@ -16,7 +16,7 @@ public class MatchSeat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "matchSeat_Id", nullable = false)
-    private Long matchSeatId;
+    private Long id;
 
     @Column(name = "capacity", nullable = false)
     private Long capacity;

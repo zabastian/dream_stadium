@@ -15,7 +15,7 @@ public class UserCoupon extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userCoupon_id", nullable = false, unique = true)
+    @Column(name = "userCoupon_id", unique = true)
     private Long id;
 
     @Column(name = "name", nullable = false)
