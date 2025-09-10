@@ -50,7 +50,7 @@ public class OwnerMatchSeatService {
                 match
         );
 
-        match.getMatchSeats().add(matchSeat);
+        match.getMatchSeats().add(matchSeat); //Match안의 객체 matchseats를 통해 matchseat을 추가(즉, match에 matchseat추가)
         seat.getMatchSeats().add(matchSeat);
 //        matchSeat.setMatch(match); 팩토리메소드 통 match와 seat을 set해줌
 //        matchSeat.setSeat(seat);
@@ -88,8 +88,8 @@ public class OwnerMatchSeatService {
             throw new BaseException(ErrorCode.USER_NOT_FOUND);
         }
 
-        matchSeat.getMatch().getMatchSeats().remove(matchSeat);
-        matchSeat.setMatch(null);
+        matchSeat.getMatch().getMatchSeats().remove(matchSeat); // match의 갹체인 matchseat에서 matchseat을 삭제(즉, match에서 matchseat을 삭제)
+        matchSeat.setMatch(null); // matchseat에서 match를 null
 
         matchSeat.getSeat().getMatchSeats().remove(matchSeat);
         matchSeat.setSeat(null);

@@ -6,6 +6,7 @@ import com.example.dream_stadium.global.exception.BaseException;
 import com.example.dream_stadium.global.exception.ErrorCode;
 import com.example.dream_stadium.owner.coupon.entity.Coupon;
 import com.example.dream_stadium.owner.coupon.repository.OwnerCouponRepository;
+import com.example.dream_stadium.owner.seat.dto.OwnerSeatResponseDto;
 import com.example.dream_stadium.owner.userCoupon.dto.UserCouponResponseDto;
 import com.example.dream_stadium.owner.userCoupon.entity.UserCoupon;
 import com.example.dream_stadium.owner.userCoupon.repository.UserCouponRepository;

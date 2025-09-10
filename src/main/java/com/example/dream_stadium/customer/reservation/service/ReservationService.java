@@ -17,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReservationService {
@@ -56,5 +58,25 @@ public class ReservationService {
         // 7. Response DTO 반환
         return ReservationResponseDto.to(reservation);
 
+    }
+
+    public List<ReservationResponseDto> reservationList(Long userId) {
+
+        List<Reservation> reservations = reservationRepository.findByUserId(userId);
+        return reservations
+                .stream()
+                .map(ReservationResponseDto::to)
+                .toList();
+    }
+
+    public void deleteReservation(Long userId, Long reservationId) {
+        Reservation reservation = reservationRepository.findById(reservationId)
+                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+
+        if(!reservation.getUser().getId().equals(userId)) {
+            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+        }
+
+        reservationRepository.delete(reservation);
     }
 }
