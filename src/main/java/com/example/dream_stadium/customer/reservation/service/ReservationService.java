@@ -43,6 +43,10 @@ public class ReservationService {
             userCoupon = userCouponRepository.findById(reservationRequestDto.getUserCouponId())
                     .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
+            if(userCoupon.isIsdownload()) {
+                throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            }
+
             userCoupon.setUsed(true);
         }
 
