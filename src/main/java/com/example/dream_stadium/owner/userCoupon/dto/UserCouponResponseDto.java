@@ -11,10 +11,9 @@ import lombok.Getter;
 public class UserCouponResponseDto {
     private Long id;
     private String name;
-    private Long userId;
     private Long couponId;
 
     public static UserCouponResponseDto to(UserCoupon userCoupon) {
-        return new UserCouponResponseDto (userCoupon.getId(), userCoupon.getName(), userCoupon.getUser().getId(), userCoupon.getCoupon().getId());
+        return new UserCouponResponseDto (userCoupon.getId(), userCoupon.getName(), userCoupon.getCoupon().getId());
     }
 }

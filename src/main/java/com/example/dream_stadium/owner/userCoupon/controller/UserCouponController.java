@@ -21,7 +21,7 @@ public class UserCouponController {
     private final UserCouponService userCouponService;
 
     @PostMapping("/createdUserCoupon")
-    public ResponseEntity<UserCouponResponseDto> createdUserCoupon(
+    public ResponseEntity<List<UserCouponResponseDto>> createdUserCoupon(
             @RequestBody UserCouponRequestDto userCouponRequestDto
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userCouponService.createUserCoupon(userCouponRequestDto));
