@@ -7,5 +7,5 @@ public class ReservationRequestDto {
     private String name;
     private Long cost;
     private Long matchSeatId;
-    private Long UserCouponId;
+    private Long userCouponId;
 }

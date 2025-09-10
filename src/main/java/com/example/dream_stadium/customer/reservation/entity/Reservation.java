@@ -20,7 +20,7 @@ public class Reservation {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @Column(name = "cost", unique = true, nullable = false)
+    @Column(name = "cost", nullable = false)
     private Long cost;
 
     @ManyToOne
