@@ -28,12 +28,12 @@ public class CustomerUserCouponController {
         return ResponseEntity.ok(customerUserCouponService.userCouponList(customUserPrincipal.getUserId()));
     }
 
-    @PostMapping("/downloadUserCoupon/{couponId}") //고객이 쿠폰 확인한것을 다운로드 받는 기능(유저쿠폰다운로드 false -> true)
+    @PostMapping("/downloadUserCoupon/{userCouponId}") //고객이 쿠폰 확인한것을 다운로드 받는 기능(유저쿠폰다운로드 false -> true)
     public ResponseEntity<Void> downloadCoupon(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
-            @PathVariable Long couponId
+            @PathVariable Long userCouponId
     ) {
-        customerUserCouponService.userCouponDownload(customUserPrincipal.getUserId(), couponId);
+        customerUserCouponService.userCouponDownload(customUserPrincipal.getUserId(), userCouponId);
         return ResponseEntity.noContent().build();
     }
 

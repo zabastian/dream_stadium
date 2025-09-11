@@ -38,6 +38,11 @@ public class ReservationService {
         MatchSeat matchSeat = ownerMatchSeatRepository.findById(reservationRequestDto.getMatchSeatId())
                 .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
+
+        if(matchSeat.getCapacity() <= 0) {
+            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+        }
+
         UserCoupon userCoupon = null;
         if (reservationRequestDto.getUserCouponId() != null) {
             userCoupon = userCouponRepository.findById(reservationRequestDto.getUserCouponId())
@@ -58,6 +63,8 @@ public class ReservationService {
         }
 
         reservationRepository.save(reservation);
+
+        matchSeat.setCapacity(matchSeat.getCapacity() - 1);
 
         // 7. Response DTO 반환
         return ReservationResponseDto.to(reservation);
