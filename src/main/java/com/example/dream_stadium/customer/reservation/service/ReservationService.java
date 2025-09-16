@@ -6,6 +6,7 @@ import com.example.dream_stadium.customer.reservation.dto.ReservationRequestDto;
 import com.example.dream_stadium.customer.reservation.dto.ReservationResponseDto;
 import com.example.dream_stadium.customer.reservation.entity.Reservation;
 import com.example.dream_stadium.customer.reservation.repository.ReservationRepository;
+import com.example.dream_stadium.global.aop.DistributedLock;
 import com.example.dream_stadium.global.exception.BaseException;
 import com.example.dream_stadium.global.exception.ErrorCode;
 import com.example.dream_stadium.owner.match_seat.entity.MatchSeat;
@@ -29,6 +30,7 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
 
     @Transactional
+    @DistributedLock(key = "reservationLock:#{#reservationRequestDto.matchSeatId}")
     public ReservationResponseDto createReservation(Long userId, ReservationRequestDto reservationRequestDto) {
 
         User user = authRepository.findById(userId)
