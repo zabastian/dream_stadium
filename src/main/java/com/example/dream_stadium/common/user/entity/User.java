@@ -28,7 +28,7 @@ public class User extends BaseEntity {
     private String nickname;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "user_role", nullable = false)
     private UserRole userRole;
 
     private boolean deleted = false;
