@@ -2,8 +2,8 @@ spring:
   application:
     name: dream_stadium
 
-  datasource :
-    url: jdbc:mysql://localhost:3307/dream_stadium
+  datasource:
+    url: jdbc:mysql://mysql:3306/dream_stadium
     username: root
     password: password
 
@@ -12,13 +12,19 @@ spring:
       ddl-auto: update
     show-sql: true
 
-
   data:
     redis:
-      host: localhost
+      host: redis
       port: 6379
 
-      #이렇게만 설정하면 Redisson이 자동으로 RedissonClient 빈을 만들어 분산락에서 사용 가능
-      #RedisConfig 클래스는 필요 없음.
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+
+
+
 
 

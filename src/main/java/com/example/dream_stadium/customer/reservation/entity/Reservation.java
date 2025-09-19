@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -38,10 +40,10 @@ public class Reservation {
     @JoinColumn(name = "user_coupons")
     private UserCoupon userCoupon;
 
+    @Column(name = "alarm_sent", nullable = false)
+    private boolean alarmSent = false;
 
-
-
-   /* public Reservation(String name, MatchSeat matchSeat, UserCoupon userCoupon) {
+    /* public Reservation(String name, MatchSeat matchSeat, UserCoupon userCoupon) {
         this.name = name;
         this.matchSeat = matchSeat;
         this.userCoupon = userCoupon;
