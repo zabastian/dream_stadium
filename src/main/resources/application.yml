@@ -1,14 +1,30 @@
-spring :
+spring:
   application:
-    name : dream_stadium
+    name: dream_stadium
 
-  datasource :
-    url : jdbc:mysql://localhost:3307/dream_stadium
-    username : root
-    password : password
+  datasource:
+    url: jdbc:mysql://mysql:3306/dream_stadium
+    username: root
+    password: password
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+
+
+
+
+
 
