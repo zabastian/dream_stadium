@@ -31,5 +31,6 @@ jobs:
           script: |
             cd /home/ubuntu/dream_stadium
             
+            # 정확한 docker-compose 경로를 사용합니다.
             /usr/libexec/docker/cli-plugins/docker-compose down || true
-            /usr/libexec/docker/cli-plugins/docker-compose up -d --build
+            /usr/libexec/docker/cli-plugins/docker-compose up -d --buildlibexec/docker/cli-plugins/docker-compose up -d --build
