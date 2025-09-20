@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - main # main 브랜치에 푸시될 때 워크플로우 실행
+      - main
 
 jobs:
   deploy:
@@ -13,7 +13,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to EC2
+      - name: Deploy to EC2 via SSH
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.EC2_HOST }}
+          REMOTE_USER: ${{ secrets.EC2_USER }}
+          SOURCE: "."
+          TARGET: "/home/ubuntu/dream_stadium"
+
+      - name: Run Docker Compose
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -22,8 +31,6 @@ jobs:
           script: |
             cd /home/ubuntu/dream_stadium
             
-            docker-compose down || true
-            
-            git pull origin main
-            
-            docker-compose up -d --build
+            # docker-compose 전체 경로를 사용하여 명령어 실행
+            /usr/bin/docker-compose down || true
+            /usr/bin/docker-compose up -d --build
