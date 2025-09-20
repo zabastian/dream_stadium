@@ -249,3 +249,6 @@ eval "set -- $(
     )" '"$@"'
 
 exec "$JAVACMD" "$@"
+
+gradle wrapper --gradle-version 8.7
+chmod +x gradlew

@@ -6,6 +6,8 @@ import com.example.dream_stadium.customer.reservation.dto.ReservationRequestDto;
 import com.example.dream_stadium.customer.reservation.dto.ReservationResponseDto;
 import com.example.dream_stadium.customer.reservation.entity.Reservation;
 import com.example.dream_stadium.customer.reservation.repository.ReservationRepository;
+import com.example.dream_stadium.global.alarm.RabbitConfig;
+import com.example.dream_stadium.global.alarm.ReservationAlarmMessage;
 import com.example.dream_stadium.global.aop.DistributedLock;
 import com.example.dream_stadium.global.exception.BaseException;
 import com.example.dream_stadium.global.exception.ErrorCode;
@@ -14,9 +16,14 @@ import com.example.dream_stadium.owner.match_seat.entity.MatchSeatRole;
 import com.example.dream_stadium.owner.match_seat.repository.OwnerMatchSeatRepository;
 import com.example.dream_stadium.owner.userCoupon.entity.UserCoupon;
 import com.example.dream_stadium.owner.userCoupon.repository.UserCouponRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.amqp.core.AmqpTemplate;
+
+
 
 import java.util.List;
 
@@ -28,6 +35,8 @@ public class ReservationService {
     private final OwnerMatchSeatRepository ownerMatchSeatRepository;
     private final UserCouponRepository userCouponRepository;
     private final ReservationRepository reservationRepository;
+    private final AmqpTemplate amqpTemplate; // RabbitMQ 발송용
+    private final ObjectMapper objectMapper;
 
     @Transactional
     @DistributedLock(key = "reservationLock:#{#reservationRequestDto.matchSeatId}")
@@ -68,7 +77,22 @@ public class ReservationService {
 
         matchSeat.setCapacity(matchSeat.getCapacity() - 1);
 
-        // 7. Response DTO 반환
+        // --- RabbitMQ 메시지 전송 ---
+        ReservationAlarmMessage alarmMessage = new ReservationAlarmMessage();
+        alarmMessage.setReservationId(reservation.getId());
+        alarmMessage.setMessage("예약이 완료되었습니다.");
+
+        try {
+            String jsonMessage = objectMapper.writeValueAsString(alarmMessage);
+            amqpTemplate.convertAndSend(
+                    RabbitConfig.RESERVATION_ALARM_EXCHANGE,
+                    RabbitConfig.RESERVATION_ALARM_QUEUE,
+                    jsonMessage
+            );
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("RabbitMQ 메시지 변환 실패", e);
+        }
+
         return ReservationResponseDto.to(reservation);
 
     }

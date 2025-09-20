@@ -39,6 +39,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation' // Valid 적용
     implementation 'org.redisson:redisson-spring-boot-starter:3.33.0' // redis 최신 버전
 
+    implementation 'org.springframework.boot:spring-boot-starter-amqp' // RabbitMQ 설정
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    // 메세지에 대해 json으로 직렬화, jave 객체로 역질렬화를 위해 사용
+
+
 
 }
 
