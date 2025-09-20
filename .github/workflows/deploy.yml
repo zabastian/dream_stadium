@@ -30,6 +30,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             cd /home/ubuntu/dream_stadium
-
+            
             /usr/libexec/docker/cli-plugins/docker-compose down || true
             /usr/libexec/docker/cli-plugins/docker-compose up -d --build
