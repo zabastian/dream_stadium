@@ -44,16 +44,18 @@
 
 ## 🔗 와이어프레임
 [와이어 프레임 링크](https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw)
+
 ## 💻 ERD
-
-
-
+[ERD 랑크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
 
 ## 📑 API 명세서
-### 1. 회원 관련 API 
-https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0
-
+[API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
 ---
-## 📜 트러블 슈팅
-- [CSV파일 한글 깨짐 현상](https://wax-drop-ff7.notion.site/CSV-193f00cdce4c80cc810fee84e97d2b42)
-- [‘MysqlDataTruncation’ 오류 해결 과정](https://wax-drop-ff7.notion.site/MysqlDataTruncation-193f00cdce4c8061a26ad1c43691c5d4)
+## 📜 트러블 슈팅 
+- [aws 배포](https://qlgh2gh.tistory.com/55)
+- [refreshToken 오류](https://qlgh2gh.tistory.com/56)
+- [orphanRemoval = true 오류](https://qlgh2gh.tistory.com/54)
+- [유저쿠폰 다운로드 문제점](https://qlgh2gh.tistory.com/57)
+- [알림 문제](https://qlgh2gh.tistory.com/58)
+- [Jmeter(분산락, security 테스트 ) + Jmeter 설정문제](https://qlgh2gh.tistory.com/59)
+
