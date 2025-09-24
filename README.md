@@ -45,51 +45,10 @@
 ## 🔗 와이어프레임
 [와이어 프레임 링크] https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw
 ## 💻 ERD
-```mermaid
-erDiagram
 
-user{
-bigint user_id PK "user_id"
-varchar name "name"
-varchar password "password"
-}
 
-shopping_mall {
-BIGINT shopping_mall_id PK
-INT business_info_rating
-MEDIUMTEXT business_name
-MEDIUMTEXT business_status
-MEDIUMTEXT business_type
-MEDIUMTEXT certification_marks
-MEDIUMTEXT company_address
-MEDIUMTEXT customer_complaint_board
-MEDIUMTEXT domain_name
-VARCHAR(255) e_commerce_license
-MEDIUMTEXT estimated_delivery_display
-MEDIUMTEXT extra_personal_info_request
-DATE  first_report_date
-MEDIUMTEXT main_products
-MEDIUMTEXT membership_cancellation
-DATE monitoring_date
-MEDIUMTEXT operator_email
-INT overall_rating
-INT payment_method_rating
-MEDIUMTEXT payment_methods
-MEDIUMTEXT phone_number
-INT privacy_security_rating
-MEDIUMTEXT security_server
-MEDIUMTEXT privacy_policy
-MEDIUMTEXT purchase_safety_service
-MEDIUMTEXT required_homepage_info
-VARCHAR(255) site_establishment_year
-MEDIUMTEXT store_name
-MEDIUMTEXT terms_compliance
-INT terms_of_service_rating
-INT withdrawal_policy_rating
-MEDIUMTEXT withdrawal_possible
-MEDIUMTEXT withdrawal_shipping_fee
-}
-```
+
+
 ## 📑 API 명세서
 ### 1. 회원 관련 API 
   - /auth<dr>
