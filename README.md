@@ -34,7 +34,7 @@
 </p>
 
 ## ⏰ 프로젝트 기간
-2025.08.11 ~ 2025. 09. 03 (약 4주)
+- 2025.08.11 ~ 2025. 09. 03 (약 4주)
 
 ## 🧑‍💻 팀원 소개
 | 이름       | 역할   | 담당 업무                  |
@@ -43,15 +43,14 @@
 
 
 ## 🔗 와이어프레임
-[와이어 프레임 링크](https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw)
+- [와이어 프레임 링크](https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw)
 
 ## 💻 ERD
-[ERD 랑크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
+- [ERD 랑크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
 
 ## 📑 API 명세서
-[API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
+- [API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
 
----
 ## 📜 트러블 슈팅 
 - [aws 배포](https://qlgh2gh.tistory.com/55)
 - [refreshToken 오류](https://qlgh2gh.tistory.com/56)
