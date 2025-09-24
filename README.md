@@ -1,28 +1,37 @@
 # dream_stadium
 
-# 🛍️ 서울시 인터넷 쇼핑몰 현황 프로젝트
+# 고객이 경기장 예매에 불편함을 겪지 않도록 만든 개인 프로젝트
 
 ## ◽ 프로젝트 정보
 - 서울시의 인터넷 쇼핑몰 현황을 조회할 수 있는 어플리케이션입니다. 조회 필터와 페이지네이션을 활용하여 업체 리스트를 확인할 수 있으며, 
 CSV 파일을 업로드하여 데이터베이스에 저장할 수 있습니다.
 
-## ◽ 주요 기능
-  - 전체 평점, 업소 상태을 기준으로 한 업체 리스트 조회
-  - Pageable 기반 업체 리스트 조회 
-  - 커서 기반 페이지네이션을 활용한 업체 리스트 조회
-  - API를 통해 CSV 파일 데이터를 데이터베이스에 저장
+## 🚀 주요 기능
+- 좌석 예매
+- spring security를 이용한 로그인
+- 간단한 알람 기능
+- 쿠폰기능
+- docker-compose 적용 및 CI/CD 파이프라인 구현
+- 부하 테스트
 
 ## 🔧 사용 기술
-<img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=Java&logoColor=white"> 
-<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-<img src="https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
-<img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
-<img src="https://img.shields.io/badge/IntelliJ IDEA-000000?style=for-the-badge&logo=intellijidea&logoColor=white">
-<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-<img src="https://img.shields.io/badge/postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white">
-<img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
-
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white"> 
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/SpringMVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
+  <img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
+  <img src="https://img.shields.io/badge/Redisson-FF0000?style=for-the-badge&logo=redis&logoColor=white">
+  <img src="https://img.shields.io/badge/SpringSecurity-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white">
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+  <img src="https://img.shields.io/badge/DockerCompose-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+  <img src="https://img.shields.io/badge/AWS%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHubActions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/JMeter-D22128?style=for-the-badge&logo=apachejmeter&logoColor=white">
+</p>
 ## ⏰ 프로젝트 기간
 2025.01.31(금) ~ 2025. 02. 07(금)
 
