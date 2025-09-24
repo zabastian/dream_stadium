@@ -43,7 +43,7 @@
 
 
 ## 🔗 와이어프레임
-[와이어 프레임 링크] https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw
+[와이어 프레임 링크] (https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw)
 ## 💻 ERD
 
 
