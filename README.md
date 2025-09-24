@@ -46,9 +46,9 @@
 - [와이어 프레임 링크](https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw)
 
 ## 💻 ERD
-- [ERD 랑크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
+- [ERD 링크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
 - ![ERD](erd2.png)
-- 
+  
 ## 📑 API 명세서
 - [API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
 
