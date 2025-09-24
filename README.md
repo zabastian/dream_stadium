@@ -47,8 +47,8 @@
 
 ## 💻 ERD
 - [ERD 랑크](https://www.erdcloud.com/d/HwkrJhhb3vdgXWRGD)
-- [](erd2.png)
-
+- ![ERD](erd.png)
+- 
 ## 📑 API 명세서
 - [API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
 
