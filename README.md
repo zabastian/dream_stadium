@@ -50,6 +50,7 @@
 
 ## 📑 API 명세서
 [API 명세서](https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0)
+
 ---
 ## 📜 트러블 슈팅 
 - [aws 배포](https://qlgh2gh.tistory.com/55)
@@ -58,4 +59,4 @@
 - [유저쿠폰 다운로드 문제점](https://qlgh2gh.tistory.com/57)
 - [알림 문제](https://qlgh2gh.tistory.com/58)
 - [Jmeter(분산락, security 테스트 ) + Jmeter 설정문제](https://qlgh2gh.tistory.com/59)
-
+---
