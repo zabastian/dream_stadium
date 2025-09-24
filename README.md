@@ -51,23 +51,7 @@
 
 ## 📑 API 명세서
 ### 1. 회원 관련 API 
-  - /auth<dr>
-#### AuthController
-| 기능       | Method   | URL              | Request | Response |
-|-----------|----------|------------------|---------|--------|
-| 회원 가입    | `POST`  | /auth/sign-up    | Body   | 201 Create | 
-| 로그인      | `POST`  | /auth/log-in      | Body    | 200 OK |
-
-
-### 2. 쇼핑몰 관련 API
-- /shopping-mall<dr>
-#### ShoppingMallController
-| 기능       | Method   | URL              | Request | Response |
-|-----------|----------|------------------|---------|--------|
-| 전체 평점 및 업체 상태 리스트 조회   | `GET`  | /shopping-mall/status-ratings   | param   | 200 OK | 
-| 페이지네이션 적용 리스트 조회 | `GET`  | /shopping-mall/status-ratings/page/{page}     | param    | 200 OK | 
-| 커서 기반 페이지네이션 적용 리스트 조회| `GET`  | /shopping-mall/status-ratings/cursor-page   | param    | 200 OK |
-| CSV 파일 업로드 및 데이터 저장    | `POST`  | /shopping-mall/collection    |     | 200 OK | 
+https://docs.google.com/spreadsheets/d/11Qq5HuWawa5z2Xr85AcOYGalAq86K45NjR2TovMdyxE/edit?gid=0#gid=0
 
 ---
 ## 📜 트러블 슈팅
