@@ -32,17 +32,15 @@ CSV 파일을 업로드하여 데이터베이스에 저장할 수 있습니다.
   <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/JMeter-D22128?style=for-the-badge&logo=apachejmeter&logoColor=white">
 </p>
+
 ## ⏰ 프로젝트 기간
-2025.01.31(금) ~ 2025. 02. 07(금)
+2025.08.11 ~ 2025. 09. 03 (약 3주 +a)
 
 ## 🧑‍💻 팀원 소개
 | 이름       | 역할   | 담당 업무                  |
 |-----------|--------|-------------------------|
-| 이현우      |  팀장 | csv reader 구현| 
-| 송준일      |  팀원 | 리팩토링 및 페이지네이션 구현 | 
-| 김현준      |  팀원 | csv reader 구현, 발표| 
-| 김세희      |  팀원 | 리팩토링 및 페이지네이션 구현| 
-| 이상구      |  팀원 | csv reader 구현 | 
+| 김현준      |  팀장 | 전체기능| 
+
 
 ## 🔗 와이어프레임
 [와이어프레임 링크](https://www.figma.com/design/UySlhnO7ms1JIkzTnLWcys/Untitled?node-id=0-1&p=f&t=CYbweDT8ESu0w3OI-0_)
