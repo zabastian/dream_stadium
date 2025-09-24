@@ -43,8 +43,7 @@ CSV 파일을 업로드하여 데이터베이스에 저장할 수 있습니다.
 
 
 ## 🔗 와이어프레임
-[와이어프레임 링크](https://www.figma.com/design/UySlhnO7ms1JIkzTnLWcys/Untitled?node-id=0-1&p=f&t=CYbweDT8ESu0w3OI-0_)
-
+[와이어 프레임 링크] https://www.figma.com/design/XfzXpl6Q6GOpBJrvhrFGiW/Untitled?node-id=0-1&p=f&m=draw
 ## 💻 ERD
 ```mermaid
 erDiagram
