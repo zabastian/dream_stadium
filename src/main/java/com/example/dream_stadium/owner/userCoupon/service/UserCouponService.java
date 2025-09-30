@@ -31,7 +31,7 @@ public class UserCouponService {
     public List<UserCouponResponseDto> createUserCoupon(UserCouponRequestDto userCouponRequestDto) {
 
         Coupon coupon = ownerCouponRepository.findById(userCouponRequestDto.getCouponId())
-                .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new BaseException(ErrorCode.COUPON_NOT_FOUND));
 
         List<User> allUsers = authRepository.findAll()
                 .stream()
@@ -72,7 +72,7 @@ public class UserCouponService {
 
     public void deleteUserCoupon(Long userCouponId) {
         UserCoupon userCoupon = userCouponRepository.findById(userCouponId)
-                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()-> new BaseException(ErrorCode.USER_COUPON_NOT_FOUND));
 
         userCouponRepository.delete(userCoupon);
     }

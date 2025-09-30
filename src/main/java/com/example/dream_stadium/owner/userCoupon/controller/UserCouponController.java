@@ -5,9 +5,11 @@ import com.example.dream_stadium.owner.coupon.service.OwnerCouponService;
 import com.example.dream_stadium.owner.userCoupon.dto.UserCouponRequestDto;
 import com.example.dream_stadium.owner.userCoupon.dto.UserCouponResponseDto;
 import com.example.dream_stadium.owner.userCoupon.service.UserCouponService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +23,9 @@ public class UserCouponController {
     private final UserCouponService userCouponService;
 
     @PostMapping("/createdUserCoupon")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<List<UserCouponResponseDto>> createdUserCoupon(
-            @RequestBody UserCouponRequestDto userCouponRequestDto
+            @Valid @RequestBody UserCouponRequestDto userCouponRequestDto
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userCouponService.createUserCoupon(userCouponRequestDto));
     }
@@ -33,6 +36,7 @@ public class UserCouponController {
     }
 
     @DeleteMapping("/deletedUserCoupon/{userCouponId}")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<Void> deletedUserCoupon(
             @PathVariable Long userCouponId
     ) {

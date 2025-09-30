@@ -7,8 +7,10 @@ import com.example.dream_stadium.customer.reservation.repository.ReservationRepo
 import com.example.dream_stadium.customer.reservation.service.ReservationService;
 import com.example.dream_stadium.customer.userCoupon.service.CustomerUserCouponService;
 import com.example.dream_stadium.global.spring_security.CustomUserPrincipal;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +26,10 @@ public class ReservationController {
     private final ReservationRepository reservationRepository;
 
     @PostMapping("/createdReservation")
+    @PreAuthorize("hasRole('CUSTOMER')")
     public ResponseEntity<ReservationResponseDto> createdReservation(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
-            @RequestBody ReservationRequestDto reservationRequestDto
+            @Valid @RequestBody ReservationRequestDto reservationRequestDto
        ) {
         ReservationResponseDto reservationResponseDto = reservationService.createReservation(customUserPrincipal.getUserId(), reservationRequestDto);
         return ResponseEntity.ok(reservationResponseDto);

@@ -65,7 +65,7 @@ public class TokenService {
 
         if(tokenEntity.isExpired()) {
             refreshTokenRepository.delete(tokenEntity);
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.TOKEN_IS_EXPIRED);
         }
 
         String newAccessToken = createAccessToken(tokenEntity.getUserId(), tokenEntity.getUserRole());

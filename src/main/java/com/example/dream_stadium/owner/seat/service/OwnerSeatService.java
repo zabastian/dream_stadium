@@ -42,7 +42,7 @@ public class OwnerSeatService {
     @Transactional
     public void deleteSeats(Long seatsId) {
         Seat seat = ownerSeatRepository.findById(seatsId)
-                        .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+                        .orElseThrow(()->new BaseException(ErrorCode.SEAT_NOT_FOUND));
         ownerMatchSeatRepository.deleteBySeatId(seat.getId());
 
         ownerSeatRepository.delete(seat);

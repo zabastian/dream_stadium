@@ -9,6 +9,7 @@ import com.example.dream_stadium.owner.userCoupon.service.UserCouponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +30,7 @@ public class CustomerUserCouponController {
     }
 
     @PostMapping("/downloadUserCoupon/{userCouponId}") //고객이 쿠폰 확인한것을 다운로드 받는 기능(유저쿠폰다운로드 false -> true)
+    @PreAuthorize("hasRole('CUSTOMER')")
     public ResponseEntity<Void> downloadCoupon(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
             @PathVariable Long userCouponId
