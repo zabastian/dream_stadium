@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -50,8 +51,16 @@ public class ReservationService {
             userCoupon = userCouponRepository.findById(reservationRequestDto.getUserCouponId())
                     .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
-            if(userCoupon.isIsdownload()) {
-                throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            if (!Objects.equals(userCoupon.getUser().getId(), userId)) {
+                throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
+            }
+
+            if(!userCoupon.isIsdownload()) {
+                throw new BaseException(ErrorCode.COUPON_NOT_DOWNLOADED);
+            }
+
+            if (userCoupon.isUsed()) {
+                throw new BaseException(ErrorCode.COUPON_ALREADY_USED);
             }
 
             userCoupon.setUsed(true);
