@@ -5,7 +5,10 @@ import org.springframework.http.HttpStatus;
 
 public enum ErrorCode {
     USER_NOT_FOUND("해당 유저를 찾을 수 없습니다.", HttpStatus.NOT_FOUND, 1),
-    LOGIN_FAILED("로그인에 실패했습니다.", HttpStatus.UNAUTHORIZED, 2);
+    LOGIN_FAILED("로그인에 실패했습니다.", HttpStatus.UNAUTHORIZED, 2),
+    UNAUTHORIZED_USER("로그인에 실패했습니다.", HttpStatus.UNAUTHORIZED, 3),
+    COUPON_NOT_DOWNLOADED("로그인에 실패했습니다.", HttpStatus.UNAUTHORIZED, 4),
+    COUPON_ALREADY_USED("로그인에 실패했습니다.", HttpStatus.UNAUTHORIZED, 5);
 
     private final String message;
     private final HttpStatus httpStatus;
