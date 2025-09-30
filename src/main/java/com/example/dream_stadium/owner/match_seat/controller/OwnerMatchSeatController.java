@@ -4,9 +4,11 @@ import com.example.dream_stadium.global.spring_security.CustomUserPrincipal;
 import com.example.dream_stadium.owner.match_seat.dto.OwnerMatchSeatRequestDto;
 import com.example.dream_stadium.owner.match_seat.dto.OwnerMatchSeatResponseDto;
 import com.example.dream_stadium.owner.match_seat.service.OwnerMatchSeatService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +22,10 @@ public class OwnerMatchSeatController {
     private final OwnerMatchSeatService ownerMatchSeatService;
 
     @PostMapping("/createMatchSeat")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<OwnerMatchSeatResponseDto> createdMatchSeat(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
-            @RequestBody OwnerMatchSeatRequestDto ownerMatchSeatRequestDto
+            @Valid @RequestBody OwnerMatchSeatRequestDto ownerMatchSeatRequestDto
             ) {
 
         OwnerMatchSeatResponseDto ownerMatchSeatResponseDto = ownerMatchSeatService.createMatchSeat(customUserPrincipal.getUserId(), ownerMatchSeatRequestDto);
@@ -38,6 +41,7 @@ public class OwnerMatchSeatController {
     }
 
     @DeleteMapping("/deleteMatchSeat/{matchSeatId}")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<Void> deletedMatchSeat(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
             @PathVariable Long matchSeatId

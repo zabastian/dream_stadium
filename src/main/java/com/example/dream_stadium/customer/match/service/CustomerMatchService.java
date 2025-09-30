@@ -34,7 +34,7 @@ public class CustomerMatchService {
     @Transactional(readOnly = true)
     public OwnerMatchResponseDto matchGet(Long id) {
         Match match = ownerMatchRepository.findById(id)
-                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ErrorCode.MATCH_NOT_FOUND));
 
         return OwnerMatchResponseDto.from(match);
 

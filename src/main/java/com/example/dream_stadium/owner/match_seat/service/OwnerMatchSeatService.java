@@ -34,13 +34,13 @@ public class OwnerMatchSeatService {
                 .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
 
         Seat seat = ownerSeatRepository.findById(ownerMatchSeatRequestDto.getSeatId())
-                .orElseThrow(() -> new RuntimeException("Seat not found"));
+                .orElseThrow(() -> new BaseException(ErrorCode.SEAT_NOT_FOUND));
 
         Match match = ownerMatchRepository.findById(ownerMatchSeatRequestDto.getMatchId())
-                .orElseThrow(() -> new RuntimeException("Match not found"));
+                .orElseThrow(() -> new BaseException(ErrorCode.MATCH_NOT_FOUND));
 
         if(!match.getUser().getId().equals(user.getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         MatchSeat matchSeat = MatchSeat.from(
@@ -82,10 +82,10 @@ public class OwnerMatchSeatService {
                 .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
 
         MatchSeat matchSeat = ownerMatchSeatRepository.findById(matchSeatId)
-                .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new BaseException(ErrorCode.MATCH_SEAT_NOT_FOUND));
 
         if (!user.getId().equals(matchSeat.getMatch().getUser().getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         matchSeat.getMatch().getMatchSeats().remove(matchSeat); // match의 갹체인 matchseat에서 matchseat을 삭제(즉, match에서 matchseat을 삭제)

@@ -35,13 +35,13 @@ public class OwnerMatchService {
                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
 
        Team homeTeam = teamRepository.findById(ownerMatchRequestDto.getHomeTeamId())
-               .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+               .orElseThrow(()->new BaseException(ErrorCode.TEAM_NOT_FOUND));
 
        Team awayTeam = teamRepository.findById(ownerMatchRequestDto.getAwayTeamId())
-                .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new BaseException(ErrorCode.TEAM_NOT_FOUND));
 
        Stadium stadium = ownerStadiumRepository.findById(ownerMatchRequestDto.getStadiumId())
-               .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+               .orElseThrow(()-> new BaseException(ErrorCode.STADIUM_NOT_FOUND));
 
 
 
@@ -85,10 +85,10 @@ public class OwnerMatchService {
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         Match match = ownerMatchRepository.findById(ownerMatchRequestDto.getId())
-                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()-> new BaseException(ErrorCode.MATCH_NOT_FOUND));
 
         if (!match.getUser().getId().equals(user.getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         ownerMatchSeatRepository.deleteByMatchId(match.getId());

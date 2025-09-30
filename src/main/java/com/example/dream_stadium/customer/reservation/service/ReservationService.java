@@ -48,17 +48,17 @@ public class ReservationService {
 
 
         MatchSeat matchSeat = ownerMatchSeatRepository.findById(reservationRequestDto.getMatchSeatId())
-                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()-> new BaseException(ErrorCode.MATCH_SEAT_NOT_FOUND));
 
 
         if(matchSeat.getCapacity() <= 0) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.MATCH_SEAT_NOT_FOUND);
         }
 
         UserCoupon userCoupon = null;
         if (reservationRequestDto.getUserCouponId() != null) {
             userCoupon = userCouponRepository.findById(reservationRequestDto.getUserCouponId())
-                    .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                    .orElseThrow(()-> new BaseException(ErrorCode.USER_COUPON_NOT_FOUND));
 
             if (!Objects.equals(userCoupon.getUser().getId(), userId)) {
                 throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
@@ -121,7 +121,7 @@ public class ReservationService {
                 .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         if(!reservation.getUser().getId().equals(userId)) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         reservationRepository.delete(reservation);

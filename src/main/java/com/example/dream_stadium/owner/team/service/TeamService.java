@@ -42,14 +42,14 @@ public class TeamService {
                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
 
        Team team = teamRepository.findById(teamId).
-                orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
+                orElseThrow(() -> new BaseException(ErrorCode.TEAM_NOT_FOUND));
 
         if(!team.getUser().getId().equals(user.getId())) { // 해당 팀을 만든유저(team의 userid)가 저장된 userId와 같아야 함, 그래야 만든사람이 수정이 가능
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         if (team.getName().equals(ownerTeamRequestDto.getName())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         } // 이름 변경이 같으면 안됨.
 
         team.setName(ownerTeamRequestDto.getName());
@@ -81,10 +81,10 @@ public class TeamService {
                 .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         Team team = teamRepository.findByName(ownerTeamRequestDto.getName())
-                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ErrorCode.TEAM_NOT_FOUND));
 
         if(!user.getId().equals(team.getUser().getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         teamRepository.delete(team);
