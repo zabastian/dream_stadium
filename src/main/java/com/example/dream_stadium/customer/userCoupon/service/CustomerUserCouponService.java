@@ -63,14 +63,14 @@ public class CustomerUserCouponService {
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         UserCoupon userCoupon = userCouponRepository.findById(userCouponId)
-                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ErrorCode.USER_COUPON_NOT_FOUND));
 
         if (!userCoupon.getUser().getId().equals(userId)) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         if (userCoupon.isIsdownload()) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.COUPON_ALREADY_USED);
         }
 
         userCoupon.download();

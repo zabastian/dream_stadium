@@ -49,10 +49,10 @@ public class OwnerCouponService {
                 .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         Coupon coupon = ownerCouponRepository.findById(couponId)
-                .orElseThrow(()->new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()->new BaseException(ErrorCode.COUPON_NOT_FOUND));
 
         if(!user.getId().equals(coupon.getUser().getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         ownerCouponRepository.delete(coupon);

@@ -26,6 +26,7 @@ import org.springframework.amqp.core.AmqpTemplate;
 
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -47,23 +48,32 @@ public class ReservationService {
 
 
         MatchSeat matchSeat = ownerMatchSeatRepository.findById(reservationRequestDto.getMatchSeatId())
-                .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(()-> new BaseException(ErrorCode.MATCH_SEAT_NOT_FOUND));
 
 
         if(matchSeat.getCapacity() <= 0) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.MATCH_SEAT_NOT_FOUND);
         }
 
         UserCoupon userCoupon = null;
         if (reservationRequestDto.getUserCouponId() != null) {
             userCoupon = userCouponRepository.findById(reservationRequestDto.getUserCouponId())
-                    .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
+                    .orElseThrow(()-> new BaseException(ErrorCode.USER_COUPON_NOT_FOUND));
 
-            if(userCoupon.isIsdownload()) {
-                throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            if (!Objects.equals(userCoupon.getUser().getId(), userId)) {
+                throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
+            }
+
+            if(!userCoupon.isIsdownload()) {
+                throw new BaseException(ErrorCode.COUPON_NOT_DOWNLOADED);
+            }
+
+            if (userCoupon.isUsed()) {
+                throw new BaseException(ErrorCode.COUPON_ALREADY_USED);
             }
 
             userCoupon.setUsed(true);
+
         }
 
         Reservation reservation = Reservation.from(reservationRequestDto.getName(), reservationRequestDto.getCost(), user, matchSeat, userCoupon);
@@ -111,7 +121,7 @@ public class ReservationService {
                 .orElseThrow(()-> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         if(!reservation.getUser().getId().equals(userId)) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         reservationRepository.delete(reservation);

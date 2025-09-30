@@ -4,9 +4,11 @@ import com.example.dream_stadium.global.spring_security.CustomUserPrincipal;
 import com.example.dream_stadium.owner.stadium.dto.OwnerStadiumRequestDto;
 import com.example.dream_stadium.owner.stadium.dto.OwnerStadiumResponseDto;
 import com.example.dream_stadium.owner.stadium.service.OwnerStadiumService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +22,10 @@ public class OwnerStadiumController {
     private final OwnerStadiumService ownerStadiumService;
 
     @PostMapping("/createdStadium")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<Void> createdStadium(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
-            @RequestBody OwnerStadiumRequestDto ownerStadiumRequestDto
+            @Valid @RequestBody OwnerStadiumRequestDto ownerStadiumRequestDto
             ) {
         ownerStadiumService.createStadium(customUserPrincipal.getUserId(), ownerStadiumRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -34,6 +37,7 @@ public class OwnerStadiumController {
     }
 
     @DeleteMapping("/deleteStadium/{stadiumId}")
+    @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<Void> deletedStadium(
             @AuthenticationPrincipal CustomUserPrincipal customUserPrincipal,
             @PathVariable Long stadiumId

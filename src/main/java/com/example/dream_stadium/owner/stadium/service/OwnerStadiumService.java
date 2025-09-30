@@ -51,10 +51,10 @@ public class OwnerStadiumService {
                 .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
 
         Stadium stadium = ownerStadiumRepository.findById(stadiumId)
-                .orElseThrow(() -> new BaseException(ErrorCode.USER_NOT_FOUND));
+                .orElseThrow(() -> new BaseException(ErrorCode.STADIUM_NOT_FOUND));
 
         if(!user.getId().equals(stadium.getUser().getId())) {
-            throw new BaseException(ErrorCode.USER_NOT_FOUND);
+            throw new BaseException(ErrorCode.UNAUTHORIZED_USER);
         }
 
         ownerStadiumRepository.delete(stadium);
