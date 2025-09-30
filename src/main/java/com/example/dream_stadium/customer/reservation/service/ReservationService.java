@@ -64,6 +64,7 @@ public class ReservationService {
             }
 
             userCoupon.setUsed(true);
+
         }
 
         Reservation reservation = Reservation.from(reservationRequestDto.getName(), reservationRequestDto.getCost(), user, matchSeat, userCoupon);
