@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OwnerStadiumResponseDto {
-    private Long teamId;
+    private Long stadiumId;
     private String name;
 }
 
