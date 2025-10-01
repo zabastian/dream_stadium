@@ -8,12 +8,11 @@ import java.time.LocalDate;
 
 @Getter
 public class OwnerMatchRequestDto {
-    @NotNull
     private Long id;
     @NotBlank
     private String name;
-    @NotNull
-    private Long cost;
+    /*@NotNull
+    private Long cost;*/
     @NotNull
     private LocalDate matchDate;
     @NotNull
@@ -22,8 +21,4 @@ public class OwnerMatchRequestDto {
     private Long awayTeamId;
     @NotNull
     private Long stadiumId;
-//
-//    public static void from() {
-//        this.name = name;
-//    }
 }

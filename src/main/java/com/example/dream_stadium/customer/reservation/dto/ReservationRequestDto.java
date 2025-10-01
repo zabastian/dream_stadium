@@ -16,7 +16,6 @@ public class ReservationRequestDto {
     private Long cost;
     @NotNull
     private Long matchSeatId;
-    @NotNull
     private Long userCouponId;
     private LocalDateTime alarmTime;
 }
